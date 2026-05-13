@@ -1,0 +1,20 @@
+package:
+  name: demo
+  version: "1.0"
+
+source:
+  path: ..
+
+build:
+  number: 0
+
+requirements:
+  build:
+    - clang
+    - cmake
+    - ninja
+
+about:
+  home: https://github.com/lipniarz/demo
+  license: MIT
+  summary: Simple multithreaded C++ counter using std::thread
