@@ -1,14 +1,18 @@
+call "C:\Program Files (x86)\Microsoft Visual Studio\18\BuildTools\VC\Auxiliary\Build\vcvarsall.bat" amd64
+
+set CC=clang-cl
+set CXX=clang-cl
+set RC=rc.exe
+
 mkdir build
 cd build
 
 cmake .. -G Ninja ^
-  -DCMAKE_CXX_COMPILER=clang++
+  -DCMAKE_BUILD_TYPE=Release ^
+  -DCMAKE_INSTALL_PREFIX=%LIBRARY_PREFIX%
 
-if errorlevel 1 exit 1
-
-ninja
-
-if errorlevel 1 exit 1
+cmake --build .
 
 mkdir %PREFIX%\bin
-copy ..\output\demo.exe %PREFIX%\bin\
+copy "%SRC_DIR%\output\demo.exe" "%PREFIX%\bin\"
+if errorlevel 1 exit 1
